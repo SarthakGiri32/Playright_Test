@@ -2,16 +2,20 @@ package org.example;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
+import org.testng.annotations.Test;
 
 import java.util.regex.Pattern;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-public class WebsiteNavigation {
-    public static void main(String[] args){
+public class WebsiteNavigationTest {
+
+    @Test
+    public static void mainMethod(){
         try (Playwright playwright = Playwright.create()){
-            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(5000));
-            Page page = browser.newPage();
+            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(3000));
+            BrowserContext context = browser.newContext();
+            Page page = context.newPage();
             page.navigate("https://playwright.dev/");
 
             //Expect a title to contain a substring
