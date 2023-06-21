@@ -3,7 +3,7 @@
 <suite name="MainSuite">
     <test thread-count="5" name="SeleniumTest">
         <classes>
-            <class name="org.example.RecordingTraceTest"/>
+            <class name="org.example.DeepDive.LocatorsExamplesTest"/>
         </classes>
     </test> <!-- SeleniumTest -->
 </suite> <!-- MainSuite -->
