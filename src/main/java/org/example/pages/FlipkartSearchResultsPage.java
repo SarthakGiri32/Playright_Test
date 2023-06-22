@@ -18,6 +18,21 @@ public class FlipkartSearchResultsPage {
         System.out.println("Search Page loaded...");
     }
 
+    public void expandFilterList(String filterName){
+        Locator filterListToggle = page.getByText(filterName, new Page.GetByTextOptions().setExact(true));
+        filterListToggle.click();
+        System.out.println("\"" + filterName + "\" Filter List expanded...");
+    }
+
+    public void selectingRamCapacityFilter(String ramCapacity){
+        Locator ramCapacityFilterCheckbox = page.getByText(ramCapacity, new Page.GetByTextOptions().setExact(true));
+        ramCapacityFilterCheckbox.click();
+        System.out.println("\"" + ramCapacity + "\" RAM capacity filter selected...");
+        Locator ramCapacityFilterApplied = page.locator("(//div[text()='32 GB'])[1]");
+        assertThat(ramCapacityFilterApplied).isVisible();
+        System.out.println("\"" + ramCapacity + "\" RAM capacity filter selection successful...");
+    }
+
     public void selectingSearchPageItem(String searchPageItem){
         Locator searchPageItemElement = page.getByText(searchPageItem);
         searchPageItemElement.click();

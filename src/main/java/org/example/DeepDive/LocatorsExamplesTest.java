@@ -39,6 +39,12 @@ public class LocatorsExamplesTest {
         // asserting correct search page load
         flipkartSearchResultsPage.assertingCorrectSearchResultsPage("Apple Macbook Pro m1");
 
+        // Expanding RAM Type filter list
+        flipkartSearchResultsPage.expandFilterList("RAM Capacity");
+
+        // Selecting "32 GB" Filter option
+        flipkartSearchResultsPage.selectingRamCapacityFilter("32 GB");
+
         // selecting a model of Apple Macbook Pro m1
         flipkartSearchResultsPage
                 .selectingSearchPageItem("APPLE 2021 Macbook Pro M1 Max - (32 GB/1 TB SSD/Mac OS Monterey) MK1A3HN/A");
