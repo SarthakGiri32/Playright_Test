@@ -7,15 +7,14 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 public class FlipkartSearchResultsPage {
     private final Page page;
-    private final Locator searchResultsPageSearchText;
 
     public FlipkartSearchResultsPage(Page page){
         this.page = page;
-        searchResultsPageSearchText = page.locator("//span[@class='_10Ermr']/span");
     }
 
     public void assertingCorrectSearchResultsPage(String searchText){
-        assertThat(searchResultsPageSearchText).hasText(searchText);
+        Locator searchResultsPageSearchText = page.getByText(searchText, new Page.GetByTextOptions().setExact(true));
+        assertThat(searchResultsPageSearchText).isVisible();
         System.out.println("Search Page loaded...");
     }
 

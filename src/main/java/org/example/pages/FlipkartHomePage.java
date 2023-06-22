@@ -12,7 +12,7 @@ public class FlipkartHomePage {
     public FlipkartHomePage(Page page){
         this.page = page;
         signInPromptCloseButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("✕"));
-        searchBarInput = page.getByTitle("Search for products, brands and more");
+        searchBarInput = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Search for products, brands and more"));
     }
 
     public void navigate(){
