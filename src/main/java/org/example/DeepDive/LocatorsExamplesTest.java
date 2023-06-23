@@ -2,6 +2,7 @@ package org.example.DeepDive;
 
 import com.microsoft.playwright.*;
 import org.example.pages.FlipkartHomePage;
+import org.example.pages.FlipkartPDPPage;
 import org.example.pages.FlipkartSearchResultsPage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,6 +16,7 @@ public class LocatorsExamplesTest {
     static Page page;
     FlipkartHomePage flipkartHomePage;
     FlipkartSearchResultsPage flipkartSearchResultsPage;
+    FlipkartPDPPage flipkartPDPPage;
 
     @BeforeMethod
     public void beforeTestMethod(){
@@ -45,9 +47,14 @@ public class LocatorsExamplesTest {
         // Selecting "32 GB" Filter option
         flipkartSearchResultsPage.selectingRamCapacityFilter("32 GB");
 
-        // selecting a model of Apple Macbook Pro m1
-        flipkartSearchResultsPage
-                .selectingSearchPageItem("APPLE 2021 Macbook Pro M1 Max - (32 GB/1 TB SSD/Mac OS Monterey) MK1A3HN/A");
+        // selecting a model of Apple Macbook Pro m1 and Opens a new tab
+        Page newPage = flipkartSearchResultsPage
+                .selectingSearchPageItem("APPLE 2021 Macbook Pro M1 Max - (32 GB/1 TB SSD/Mac OS Monterey) MK1A3HN/A", context);
+        flipkartPDPPage = new FlipkartPDPPage(newPage);
+
+        // asserting correct pdp page load
+        flipkartPDPPage.assertingPDPPageLoad("APPLE 2021 Macbook Pro M1 Max - (32 GB/1 TB SSD/Mac OS Monterey) MK1A3HN/A");
+
     }
 
     @AfterMethod

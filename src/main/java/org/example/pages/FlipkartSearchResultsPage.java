@@ -1,5 +1,6 @@
 package org.example.pages;
 
+import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
@@ -33,10 +34,15 @@ public class FlipkartSearchResultsPage {
         System.out.println("\"" + ramCapacity + "\" RAM capacity filter selection successful...");
     }
 
-    public void selectingSearchPageItem(String searchPageItem){
+    public Page selectingSearchPageItem(String searchPageItem, BrowserContext context){
         Locator searchPageItemElement = page.getByText(searchPageItem);
-        searchPageItemElement.click();
+        Page newPage = context.waitForPage(searchPageItemElement::click);
         System.out.println("\"" + searchPageItem + "\" search item selected...");
+        newPage.waitForLoadState();
+        System.out.println("New Page title: " + newPage.title());
+        return newPage;
     }
+
+
 
 }
