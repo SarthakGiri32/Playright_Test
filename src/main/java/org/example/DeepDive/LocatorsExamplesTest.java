@@ -55,6 +55,12 @@ public class LocatorsExamplesTest {
         // asserting correct pdp page load
         flipkartPDPPage.assertingPDPPageLoad("APPLE 2021 Macbook Pro M1 Max - (32 GB/1 TB SSD/Mac OS Monterey) MK1A3HN/A");
 
+        // entering pin code for location verification
+        flipkartPDPPage.enteringPinCodeForLocationVerification("831005");
+
+        // Buy with exchange option selected
+        flipkartPDPPage.clickBuyWithExchangeButton();
+
     }
 
     @AfterMethod

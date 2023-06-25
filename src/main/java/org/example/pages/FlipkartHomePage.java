@@ -4,6 +4,8 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 public class FlipkartHomePage {
     private final Page page;
     private final Locator signInPromptCloseButton;
@@ -28,6 +30,7 @@ public class FlipkartHomePage {
         searchBarInput.click();
         System.out.println("Search bar clicked...");
         searchBarInput.fill(searchText);
+        assertThat(searchBarInput).hasValue(searchText);
         System.out.println("\"" + searchText + "\" search text entered...");
         searchBarInput.press("Enter");
         System.out.println("Search started...");
