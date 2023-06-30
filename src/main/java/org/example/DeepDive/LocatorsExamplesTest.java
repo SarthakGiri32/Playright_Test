@@ -91,6 +91,12 @@ public class LocatorsExamplesTest extends ReadConfigFiles {
         // Buy with exchange option selected
         flipkartPDPPage.clickBuyWithExchangeButton();
 
+        // close Buy with exchange popup
+        flipkartPDPPage.clickCloseBuyWithExchangePopup();
+
+        // item added to cart
+        flipkartPDPPage.clickOnAddToCartButton(itemName);
+
     }
 
     @AfterMethod

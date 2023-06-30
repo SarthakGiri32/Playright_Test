@@ -22,8 +22,13 @@ public class FlipkartHomePage {
     }
 
     public void closeSignInPrompt(){
-        signInPromptCloseButton.click();
-        System.out.println("Sign In prompt close button clicked...");
+        try {
+            signInPromptCloseButton.waitFor(new Locator.WaitForOptions().setTimeout(3000));
+            signInPromptCloseButton.click();
+            System.out.println("Sign In prompt close button clicked...");
+        } catch (Exception e) {
+            System.out.println("Sign In prompt not found, can continue with flow...");
+        }
     }
 
     public void startSearchForSearchText(String searchText){

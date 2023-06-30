@@ -43,6 +43,4 @@ public class FlipkartSearchResultsPage {
         return newPage;
     }
 
-
-
 }
